@@ -5,7 +5,7 @@ def konverter_letters_to_numbers(b): # функция перевода Букв 
         if ord(sp[i]) >= 65 and ord(sp[i]) <= 70:
             sp[i] = str(ord(sp[i]) - 55)
     return sp
-def konverter_from_10(a,b): # функция перевода в 10-ную систему, используя встроенные ф-ии Python
+def konverter_from_10(a,b): # функция перевода из 10-ной системы, используя встроенные ф-ии Python
     if a == 2:
         return bin((int(b)))[2:]
     if a == 8:
