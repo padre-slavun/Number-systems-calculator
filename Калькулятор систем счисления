@@ -1,0 +1,36 @@
+def konverter_letters_to_numbers(b): # функция перевода Букв из 16-ричной системы в 10-ную
+    sp = []
+    sp.extend(b)
+    for i in range(len(sp)):
+        if ord(sp[i]) >= 65 and ord(sp[i]) <= 70:
+            sp[i] = str(ord(sp[i]) - 55)
+    return sp
+def konverter_from_10(a,b): # функция перевода в 10-ную систему, используя встроенные ф-ии Python
+    if a == 2:
+        return bin((int(b)))[2:]
+    if a == 8:
+        return oct((int(b)))[2:]
+    if a == 16:
+        return hex(int(b))[2:].upper()
+def konverter_from_2_8_16_to_10(a,b): # ф-ция перевода в 10-нуб систему
+    desired_number = 0
+    counter = len(b) - 1
+    for i in range(len(b)):
+        desired_number += (int(b[counter]) * a ** i)
+        counter -= 1
+    return desired_number
+number = input()
+n = int(input('Исходная система счисления '))
+x = int(input('Конечная система счисления '))
+if n == 10:
+    print(konverter_from_10(x,number))
+if n != 10 and x ==10:
+    if n == 2 or n == 8:
+        print(konverter_from_2_8_16_to_10(n,number))
+    if n == 16:
+        print(konverter_from_2_8_16_to_10(n,konverter_letters_to_numbers(number)))
+if n != 10 and x != 10:
+    if n == 2 or n == 8:
+        print(konverter_from_10(x,konverter_from_2_8_16_to_10(n,number)))
+    if n == 16:
+        print(konverter_from_10(x,konverter_from_2_8_16_to_10(n, konverter_letters_to_numbers(number))))
